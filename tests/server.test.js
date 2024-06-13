@@ -35,3 +35,15 @@ describe("v2/ functionality", () => {
         expect(response.body.data.movie).toBeTruthy();
     });
 });
+
+describe("v2/ functionality", () => {
+
+    it("v2/ POST receives data correctly", async () => {
+    });
+
+    it("v2/headercheck GET receives an auth header correctly", async () => {
+        const response = await request(app).get("/v2/headercheck").auth("brett was here", {type: "bearer"});
+
+        expect(response.body.data).toBe("Bearer brett was here");
+    });
+})
