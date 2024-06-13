@@ -11,4 +11,12 @@ router.get("/", (request, response, next) => {
     });
 });
 
+router.post("/", (request, response, next) => {
+
+    response.json({
+        message:"Received data!",
+        data: request.body
+    });
+});
+
 module.exports = router;
