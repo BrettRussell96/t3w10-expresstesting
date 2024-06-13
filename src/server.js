@@ -6,14 +6,9 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.get("/", (request, response, next) => {
+const apiV2 = require('./v2/index.js');
 
-    return next(new Error("Error on purpose from root route"));
-
-    response.json({
-        message: "Hello world!"
-    });
-});
+app.use("/v2", apiV2);
 
 app.use((error, request, response, next) => {
     response.json({
@@ -25,5 +20,5 @@ app.use((error, request, response, next) => {
 
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on http://localhost:${port}/v2/`);
 });
